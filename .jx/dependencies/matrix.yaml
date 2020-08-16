@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: ascheman
+  repo: jx3-golang-http-second
+  url: https://github.com/ascheman/jx3-golang-http-second.git
+  version: ""
+  versionURL: ""
