@@ -7,37 +7,59 @@ buildPacks:
     gitRef: master
     gitURL: https://github.com/jenkins-x/jxr-packs-kubernetes.git
 cluster:
-  clusterName: ""
-  devEnvApprovers:
-  - todo
-  environmentGitOwner: "todo"
+  clusterName: tf-jx-immortal-koala
+  environmentGitOwner: todo
   gitKind: github
   gitName: github
   gitServer: https://github.com
+  gke:
+    projectNumber: "884111317175"
   namespace: jx
-  project:  ""
+  project: jxtest-199909
   provider: gke
   registry: gcr.io
-  zone: ""
+  vaultName: tf-jx-immortal-koala
+  vaultSAName: tf-jx-immortal-koala-vt
+  zone: us-central1-a
 environments:
-- key: dev
-  owner: ""
-  repository: ""
-- key: staging
-  owner: ""
-  repository: ""
-- key: production
-  owner: ""
-  repository: ""
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  owner: ascheman
+  repository: jx3-first-try
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
 gitops: true
 ingress:
-  domain: ""
+  domain: 35.226.230.4.nip.io
   externalDNS: false
   namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
-    production: false
+    production: true
 kaniko: true
 repository: nexus
 secretStorage: vault
@@ -46,15 +68,20 @@ storage:
     enabled: false
     url: ""
   logs:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://logs-tf-jx-immortal-koala-7238f996fb03
   reports:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://reports-tf-jx-immortal-koala-7238f996fb03
   repository:
-    enabled: false
-    url: ""
-vault: {}
+    enabled: true
+    url: gs://repository-tf-jx-immortal-koala-7238f996fb03
+vault:
+  bucket: vault-tf-jx-immortal-koala-7238f996fb03
+  key: crypto-key-tf-jx-immortal-koala-7238f996fb03
+  keyring: keyring-tf-jx-immortal-koala-7238f996fb03
+  name: tf-jx-immortal-koala
+  serviceAccount: tf-jx-immortal-koala-vt
 velero:
   schedule: ""
   ttl: ""

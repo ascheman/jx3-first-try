@@ -1,0 +1,92 @@
+jxRequirements:
+  autoUpdate:
+    enabled: false
+    schedule: ""
+  bootConfigURL: https://github.com/jenkins-x/jx3-boot-config
+  buildPacks:
+    buildPackLibrary:
+      gitRef: master
+      gitURL: https://github.com/jenkins-x/jxr-packs-kubernetes.git
+  cluster:
+    clusterName: tf-jx-immortal-koala
+    environmentGitOwner: todo
+    gitKind: github
+    gitName: github
+    gitServer: https://github.com
+    gke:
+      projectNumber: "884111317175"
+    namespace: jx
+    project: jxtest-199909
+    provider: gke
+    registry: gcr.io
+    vaultName: tf-jx-immortal-koala
+    vaultSAName: tf-jx-immortal-koala-vt
+    zone: us-central1-a
+  environments:
+  - ingress:
+      domain: ""
+      externalDNS: false
+      namespaceSubDomain: ""
+      tls:
+        email: ""
+        enabled: false
+        production: false
+    key: dev
+    owner: ascheman
+    repository: jx3-first-try
+  - ingress:
+      domain: ""
+      externalDNS: false
+      namespaceSubDomain: ""
+      tls:
+        email: ""
+        enabled: false
+        production: false
+    key: staging
+  - ingress:
+      domain: ""
+      externalDNS: false
+      namespaceSubDomain: ""
+      tls:
+        email: ""
+        enabled: false
+        production: false
+    key: production
+  gitops: true
+  ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: true
+  kaniko: true
+  repository: nexus
+  secretStorage: vault
+  storage:
+    backup:
+      enabled: false
+      url: ""
+    logs:
+      enabled: true
+      url: gs://logs-tf-jx-immortal-koala-7238f996fb03
+    reports:
+      enabled: true
+      url: gs://reports-tf-jx-immortal-koala-7238f996fb03
+    repository:
+      enabled: true
+      url: gs://repository-tf-jx-immortal-koala-7238f996fb03
+  vault:
+    bucket: vault-tf-jx-immortal-koala-7238f996fb03
+    key: crypto-key-tf-jx-immortal-koala-7238f996fb03
+    keyring: keyring-tf-jx-immortal-koala-7238f996fb03
+    name: tf-jx-immortal-koala
+    serviceAccount: tf-jx-immortal-koala-vt
+  velero:
+    schedule: ""
+    ttl: ""
+  versionStream:
+    ref: master
+    url: https://github.com/jenkins-x/jxr-versions.git
+  webhook: lighthouse
