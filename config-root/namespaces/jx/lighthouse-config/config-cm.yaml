@@ -64,7 +64,7 @@ data:
         - needs-rebase
         repos:
         - ascheman/jx3-first-try
-      target_url: http://deck-jx.
+      target_url: http://deck-jx.35.226.230.4.nip.io
 kind: ConfigMap
 metadata:
   creationTimestamp: null
