@@ -9,6 +9,10 @@ data:
               required_status_checks:
                 contexts:
                 - promotion-build
+            jx3-golang-http-second:
+              required_status_checks:
+                contexts:
+                - pr-build
       protect-tested-repos: true
     deck:
       spyglass: {}
@@ -24,12 +28,25 @@ data:
         - master
         name: promotion
         skip_report: true
+      ascheman/jx3-golang-http-second:
+      - agent: tekton
+        branches:
+        - master
+        name: release
+        skip_report: true
     presubmits:
       ascheman/jx3-first-try:
       - agent: tekton
         always_run: true
         context: promotion-build
         name: promotion-build
+        rerun_command: /test this
+        trigger: (?m)^/test( all| this),?(\s+|$)
+      ascheman/jx3-golang-http-second:
+      - agent: tekton
+        always_run: true
+        context: pr-build
+        name: pr-build
         rerun_command: /test this
         trigger: (?m)^/test( all| this),?(\s+|$)
     prowjob_namespace: jx
@@ -39,10 +56,11 @@ data:
     tide:
       context_options:
         from-branch-protection: true
-        required-if-present-contexts: []
+        required-if-present-contexts: null
         skip-unknown-contexts: false
       merge_method:
         ascheman/jx3-first-try: merge
+        ascheman/jx3-golang-http-second: merge
       queries:
       - labels:
         - approved
@@ -54,6 +72,7 @@ data:
         - needs-rebase
         repos:
         - ascheman/jx3-first-try
+        - ascheman/jx3-golang-http-second
       - labels:
         - updatebot
         missingLabels:
@@ -64,6 +83,7 @@ data:
         - needs-rebase
         repos:
         - ascheman/jx3-first-try
+        - ascheman/jx3-golang-http-second
       target_url: http://deck-jx.35.226.230.4.nip.io
 kind: ConfigMap
 metadata:
