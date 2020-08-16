@@ -1,0 +1,30 @@
+# Source: jx3-golang-http-second/templates/release.yaml
+apiVersion: jenkins.io/v1
+kind: Release
+metadata:
+  creationTimestamp: "2020-08-16T09:57:09Z"
+  deletionTimestamp: null
+  name: 'jx3-golang-http-second-0.0.2'
+  namespace: jx-staging
+  labels:
+    gitops.jenkins-x.io/pipeline: 'environment'
+spec:
+  commits:
+  - author:
+      accountReference:
+      - provider: jenkins.io/git-github-userid
+      email: jenkins-x@googlegroups.com
+      name: jenkins-x-bot
+    branch: master
+    committer: {}
+    message: |
+      release 0.0.2
+    sha: 61e60247f0fc439c5dfd232646dc60d2beb1ee19
+  gitCloneUrl: https://github.com/ascheman/jx3-golang-http-second.git
+  gitHttpUrl: https://github.com/ascheman/jx3-golang-http-second
+  gitOwner: ascheman
+  gitRepository: jx3-golang-http-second
+  name: 'jx3-golang-http-second'
+  releaseNotesURL: https://github.com/ascheman/jx3-golang-http-second/releases/tag/v0.0.2
+  version: v0.0.2
+status: {}
